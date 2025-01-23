@@ -3,7 +3,7 @@ import Reducer from "./useReducer";
 
 const App = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen ">
       <Reducer />
     </div>
   );
