@@ -1,10 +1,12 @@
 import React from "react";
-import Reducer from "./useReducer";
+
+import UseMemo from "./UseMemo";
+import UseEffect from "./UseEffect";
 
 const App = () => {
   return (
-    <div className="flex items-center justify-center h-screen ">
-      <Reducer />
+    <div className="p-4">
+      <UseEffect />
     </div>
   );
 };

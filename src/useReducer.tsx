@@ -1,47 +1,47 @@
 import React, { useReducer } from "react";
 
-// const Reducer = () => {
-//   const initialState = { names: [], name: "john" };
+const Reducer = () => {
+  const initialState = { names: [], name: "john" };
 
-//   const reducer = (state, action) => {
-//     if (action.type === "setName") {
-//       return { ...state, name: action.payload };
-//     }
-//     if (action.type === "listName") {
-//       return {
-//         ...state,
-//         names: [...state.names, state.name],
-//         name: "",
-//       };
-//     }
-//     return state;
-//   };
+  const reducer = (state, action) => {
+    if (action.type === "setName") {
+      return { ...state, name: action.payload };
+    }
+    if (action.type === "listName") {
+      return {
+        ...state,
+        names: [...state.names, state.name],
+        name: "",
+      };
+    }
+    return state;
+  };
 
-//   const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-//   return (
-//     <div className="p-4 bg-gray-200">
-//       <input
-//         type="text"
-//         value={state.name}
-//         onChange={(e) => dispatch({ type: "setName", payload: e.target.value })}
-//       />
-//       <div>
-//         {state.names.map((name, index) => (
-//           <div key={index}>{name}</div>
-//         ))}
-//       </div>
-//       <button
-//         onClick={() => dispatch({ type: "listName" })}
-//         className="px-4 py-2 mt-2 text-white bg-blue-500 rounded"
-//       >
-//         Add Name
-//       </button>
-//     </div>
-//   );
-// };
+  return (
+    <div className="p-4 bg-gray-200">
+      <input
+        type="text"
+        value={state.name}
+        onChange={(e) => dispatch({ type: "setName", payload: e.target.value })}
+      />
+      <div>
+        {state.names.map((name, index) => (
+          <div key={index}>{name}</div>
+        ))}
+      </div>
+      <button
+        onClick={() => dispatch({ type: "listName" })}
+        className="px-4 py-2 mt-2 text-white bg-blue-500 rounded"
+      >
+        Add Name
+      </button>
+    </div>
+  );
+};
 
-// export default Reducer;
+export default Reducer;
 
 //! Write a reducer that toggles a darkMode state between true and false.
 // !test one beginner
@@ -155,83 +155,83 @@ import React, { useReducer } from "react";
 // Add a new task with title and completed: false.
 // Toggle completed for a specific task by id.
 // Remove a task by id.
-const Test3 = () => {
-  const initialState = {
-    tasks: [],
-    task: { title: "", completed: false, id: 1 },
-  };
+// const Test3 = () => {
+//   const initialState = {
+//     tasks: [],
+//     task: { title: "", completed: false, id: 1 },
+//   };
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "toggleTask":
-        return {
-          ...state,
-          tasks: state.tasks.map((task) =>
-            task.id === action.payload
-              ? { ...task, completed: !task.completed }
-              : task
-          ),
-        };
-      case "addTask":
-        return {
-          ...state,
-          tasks: [...state.tasks, { ...state.task, id: state.task.id + 1 }],
-          task: { title: "", completed: false, id: state.task.id + 1 },
-        };
-      case "removeTask":
-        return {
-          ...state,
-          tasks: state.tasks.filter((task) => task.id !== action.payload),
-        };
-      case "setTaskTitle":
-        return { ...state, task: { ...state.task, title: action.payload } };
-      default:
-        return state;
-    }
-  };
+//   const reducer = (state, action) => {
+//     switch (action.type) {
+//       case "toggleTask":
+//         return {
+//           ...state,
+//           tasks: state.tasks.map((task) =>
+//             task.id === action.payload
+//               ? { ...task, completed: !task.completed }
+//               : task
+//           ),
+//         };
+//       case "addTask":
+//         return {
+//           ...state,
+//           tasks: [...state.tasks, { ...state.task, id: state.task.id + 1 }],
+//           task: { title: "", completed: false, id: state.task.id + 1 },
+//         };
+//       case "removeTask":
+//         return {
+//           ...state,
+//           tasks: state.tasks.filter((task) => task.id !== action.payload),
+//         };
+//       case "setTaskTitle":
+//         return { ...state, task: { ...state.task, title: action.payload } };
+//       default:
+//         return state;
+//     }
+//   };
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+//   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <div className="p-4 bg-gray-200">
-      <input
-        type="text"
-        value={state.task.title}
-        onChange={(e) =>
-          dispatch({ type: "setTaskTitle", payload: e.target.value })
-        }
-        className="px-2 py-1 border border-gray-300 rounded"
-      />
-      <button
-        onClick={() => dispatch({ type: "addTask" })}
-        className="px-4 py-2 mt-2 text-white bg-blue-500 rounded"
-      >
-        Add Task
-      </button>
-      <div className="mt-4">
-        {state.tasks.map((task) => (
-          <div key={task.id} className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={task.completed}
-              onChange={() =>
-                dispatch({ type: "toggleTask", payload: task.id })
-              }
-            />
-            <span className={task.completed ? "line-through" : ""}>
-              {task.title}
-            </span>
-            <button
-              onClick={() => dispatch({ type: "removeTask", payload: task.id })}
-              className="px-2 py-1 text-white bg-red-500 rounded"
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="p-4 bg-gray-200">
+//       <input
+//         type="text"
+//         value={state.task.title}
+//         onChange={(e) =>
+//           dispatch({ type: "setTaskTitle", payload: e.target.value })
+//         }
+//         className="px-2 py-1 border border-gray-300 rounded"
+//       />
+//       <button
+//         onClick={() => dispatch({ type: "addTask" })}
+//         className="px-4 py-2 mt-2 text-white bg-blue-500 rounded"
+//       >
+//         Add Task
+//       </button>
+//       <div className="mt-4">
+//         {state.tasks.map((task) => (
+//           <div key={task.id} className="flex items-center gap-2">
+//             <input
+//               type="checkbox"
+//               checked={task.completed}
+//               onChange={() =>
+//                 dispatch({ type: "toggleTask", payload: task.id })
+//               }
+//             />
+//             <span className={task.completed ? "line-through" : ""}>
+//               {task.title}
+//             </span>
+//             <button
+//               onClick={() => dispatch({ type: "removeTask", payload: task.id })}
+//               className="px-2 py-1 text-white bg-red-500 rounded"
+//             >
+//               Remove
+//             </button>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
-export default Test3;
+// export default Test3;
