@@ -1,12 +1,10 @@
 import React from "react";
-
-import UseMemo from "./UseMemo";
-import UseEffect from "./UseEffect";
+import WindowReSizeIntermediate from "./useEffect-challenge/WindowResizeIntermediate";
 
 const App = () => {
   return (
-    <div className="p-4">
-      <UseEffect />
+    <div className="flex items-center justify-center min-h-screen p-4">
+      <WindowReSizeIntermediate />
     </div>
   );
 };

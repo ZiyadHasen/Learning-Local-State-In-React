@@ -37,7 +37,12 @@ const UseEffect = () => {
   return (
     <div>
       {names.map((name) => (
-        <button onClick={() => onSelectedNameChange(name)}> {name} ,</button>
+        <button
+          className="px-2 py-1 mx-3 text-white bg-blue-500 rounded btn hover:bg-blue-700"
+          onClick={() => onSelectedNameChange(name)}
+        >
+          {name}
+        </button>
       ))}
       <div>{JSON.stringify(selectedNameDetails)}</div>
     </div>
